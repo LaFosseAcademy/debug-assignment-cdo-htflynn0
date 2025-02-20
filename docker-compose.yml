@@ -12,7 +12,7 @@ services:
     environment:
       DB_USER: postgres
       DB_HOST: tour-de-france-db 
-      DB_NAME: tour_de_france
+      DB_NAME: tour-de-france
       DB_PASSWORD: mysecurepassword
       DB_PORT: 5432
 
