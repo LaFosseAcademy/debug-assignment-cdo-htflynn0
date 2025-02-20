@@ -13,7 +13,7 @@ services:
       DB_USER: postgres
       DB_HOST: tour-de-france-db 
       DB_NAME: tour-de-france
-      DB_PASSWORD: mysecurepassword
+      DB_PASSWORD: docker
       DB_PORT: 5432
 
   tour-de-france-db:
