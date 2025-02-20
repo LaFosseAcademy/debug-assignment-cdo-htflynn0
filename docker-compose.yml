@@ -5,10 +5,16 @@ services:
     ports:
       - "3000:3000"
     restart: always
-    networks:
-      - tour-network
     depends_on:
       - tour-de-france-db
+    networks:
+      - tour-network
+    environment:
+      DB_USER: postgres
+      DB_HOST: tour-de-france-db 
+      DB_NAME: tour_de_france
+      DB_PASSWORD: mysecurepassword
+      DB_PORT: 5432
 
   tour-de-france-db:
     image: htflynn/tour-de-france-db:0.0.1.RELEASE
