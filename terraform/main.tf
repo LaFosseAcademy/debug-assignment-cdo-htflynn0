@@ -11,12 +11,13 @@ provider "aws" {
     region = "us-east-1"
 }
 
+
 resource "aws_instance" "http_server" {
-  ami = ""
+  ami = "ami-053a45fff0a704a47"
   key_name = "default-ec2"
-  instance_type = ""
+  instance_type = "t2.micro"
   vpc_security_group_ids = [aws_security_group.http_server_sg.id]
-  subnet_id = data.aws_subnets.default_subnets.ids[0]
+  subnet_id = "subnet-053ddd01fdde0b066"  #data.aws_subnets.default_subnets.ids[0]
   connection {
     type = "ssh"
     host = self.public_ip
