@@ -1,12 +1,17 @@
 - hosts: all
   become: true
   tasks:
-    - name: Navigate to directory containing docker-compose.yml
-      shell: cd devops-assessment
-      args:
-        chdir: /home/ec2-user
+    - name: Ensure docker-compose.yml exists
+      stat:
+        path: /home/ec2-user/docker-compose.yml
+      register: compose_file
 
-    - name: Run docker-compose 
+    - name: Fail if docker-compose.yml is missing
+      fail:
+        msg: "docker-compose.yml not found in /home/ec2-user/"
+      when: not compose_file.stat.exists
+
+    - name: Run docker-compose
       shell: docker-compose up -d
       args:
-        chdir: /home/ec2-user/devops-assessment
+        chdir: /home/ec2-user/
